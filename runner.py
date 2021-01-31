@@ -1,6 +1,7 @@
 from binance_helper import BinanceAPIHelper
 from argparse import ArgumentParser
 import sys
+import os
 
 
 TARGET_SAVE_DIR = './dir_to_save_data'
@@ -15,6 +16,7 @@ if __name__ == '__main__':
     args = p.parse_args(sys.argv[1:])
 
     helper = BinanceAPIHelper()
+    os.makedirs(os.path.join(TARGET_SAVE_DIR))
     helper.get_historical_ohlc(symbol=args.coin,  
                                start_date=args.start_date, 
                                end_date=args.end_date, 
